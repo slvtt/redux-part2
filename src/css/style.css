@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    font-family: 'Roboto';
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    font-weight: 400;
+    min-width: 320px;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    opacity: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+nav,
+li,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+article {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    background-color: #fbfbfb;
+}
+
+footer {
+    background-color: white;
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat-Regular.woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url('../fonts/Montserrat-Bold.woff2');
+    font-weight: 600;
+}
+
+input,
+button {
+    outline: none;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #3c5499;
+    color: #fff;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+

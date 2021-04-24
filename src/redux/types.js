@@ -1,0 +1,2 @@
+export const ADD_COMMENT = 'ADD_COMMENTS';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT'; 

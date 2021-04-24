@@ -1,0 +1,99 @@
+
+.fixed-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.info_subTitle {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.info-block {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    line-height: 1.5;
+    margin: 0 0 24px 0;
+}
+
+
+.comment {
+    font-family: "Montserrat";
+    width: 300px;
+    color: #fff;
+    text-align: center;
+    border: none;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #30bae7;
+    font-size: 16px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name_input {
+    height: 30px;
+    max-width: 300px;
+    border-radius: 10px;
+    border: none;
+    background-color: #607fd9;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.user-name_input::placeholder {
+    color: #fff;
+}
+
+.btn_submit {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    width: 150px;
+    height: 55px;
+    border-radius: 10px;
+    border: none;
+    background-color: #17c2a4;
+}
+
+.item-comment {
+    padding: 20px 30px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    background-color: #d74680;
+}
+
+.item-delete {
+    background-color: #ffdd99;
+    height: 20px;
+    width: 30px;
+    border: none;
+    border-radius: 5px
+}
+
+.userName_span {
+    margin-right: 15px;
+}
+
+.item{
+    color:#fff;
+}
+.comment-list{
+    margin-top: 15px;
+}
+.comment-info{
+    margin-top: 15px;
+    font-size: 20px;
+}
