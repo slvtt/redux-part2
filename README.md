@@ -8,7 +8,7 @@
 ### Инициализация хранилища(store)
 
 перед этим всем делом импортируем нужные нам функции и т.д.
-![store](/imgforGH\initialisationStore.png)
+![store](imgforGH/initialisationStore.png)
 
 
 ## Ответы на вопросы
