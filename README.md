@@ -1,15 +1,116 @@
 # redux
 ## This is my first project in react-redux
 
-# Как работает мое приложение
 
-Стараюсь описать все в мельчайших аспектах, не пропустив вообще ничего. Ну или пропущу незначительные вещи,но про redux расскажу подробно
+## Как работает мое приложение
+Я решил полностью переделать приложение, потому что не мог разабраться в своей же каше, которую заварил
+
+Стараюсь описать все в мельчайших аспектах, не пропустив вообще ничего. Ну или пропущу незначительные вещи,но про redux расскажу подробно. 
 
 ### Инициализация хранилища(store)
 
 перед этим всем делом импортируем нужные нам функции и т.д.
-![store](imgforGH/initialisationStore.png)
 
+    const store = createStore(commentReducer,state,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+    store.subscribe(() => {
+        saveState(store.getState())
+    })
+
+В пропсах указываем наш редьюсер и начальное состояние, которым является localStorage и выражение, для работы с redux devTools. Дальше я подписываю стор на изменение состояния и все
+
+### Создаем экшены
+
+    import {ADD_COMMENT,REMOVE_COMMENT} from '../types'
+
+    export const addComment = (comment) =>{
+        return{
+            type:ADD_COMMENT,
+            payload:comment
+        }
+    }
+
+    export const removeComment = (comment,id) =>{
+        return {
+            type:REMOVE_COMMENT,
+            id,
+            payload:comment
+        }
+    }
+
+Импортируем типы данных, созданных заранее, для исключения ошибок 
+Создаем экшены с помощью actionCreator-ов. Честно уже не совсем помню для чего они, но точно знаю, что так надо и лучше))
+
+### Редьюсер
+
+Мой главный редьюсер, который всего лишь обрабатывает два экшена. Что самое главное, так это то, что с помощью редьюсера можно изменить стейт приложения
+
+    import {ADD_COMMENT,REMOVE_COMMENT} from '../types'
+
+    const initialState = {
+        comments:[]
+    }
+
+    export const commentReducer = (state = initialState,action) =>{
+        switch(action.type){
+        
+        case ADD_COMMENT:
+            return {
+                ...state, comments:[...state.comments,action.payload]
+            }
+        
+        case REMOVE_COMMENT:
+            let filterArr = action.payload.filter(comment => comment.id != action.id)
+            return {...state, comments:[...state.comments = filterArr]}
+
+        default:return state
+    }
+
+    }
+
+Создав предварительно дефолтный стейт, передаем его в пропсы, дальше проодимся по кейса и с помощью спред-оператора делаем копию состояния, добавляя в него новые объекты. По дефолту возвращаем текущий стейт, если кейс не сработал
+
+### localStorage
+
+    export const loadState = () => {
+        try {
+            return localStorage.getItem('state') ? JSON.parse(localStorage.getItem('state')) : undefined;
+        } catch (err) {
+            return undefined
+        }
+    }
+
+    export const saveState = (state) => {
+        try {
+            localStorage.setItem('state', JSON.stringify(state))
+        } catch (err) {
+
+        }
+    }
+
+Здесь я экспортирую 2 функции, одна из которых загружает состояние в стор браузера, другая же сохраняет этот стейт
+
+
+### Работа компонентов
+
+В целом внутренности компонента показывать смысла нет, расскажу про коннект и эти 2 функции.
+
+Коннект позволяет отправлять/получать данные из редакс стора. Принимает в себя эта функция два параметра, то бишь функции
+
+в этих функциях все предельно просто:mapStateToProps() для чтения состояния и mapDispatchToProps() для передачи события. Далее генерируем компонент путем передачи созданных функций в connect().
+
+    const mapStateToProps = state => {
+        return {
+            stateComment:state.comments
+        }
+    }
+    const mapDispatchToProps = {
+        removeComment
+    }
+
+    export default connect(mapStateToProps,mapDispatchToProps)(Comments);
+
+В принципе с другими компонентами аналогичная ситуация.
 
 ## Ответы на вопросы
 ### Что делает Redux и какие проблемы он решает
